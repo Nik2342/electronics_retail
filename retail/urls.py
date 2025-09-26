@@ -1,10 +1,13 @@
 from django.urls import path
-
-from trade_network import views
-
+from .views import TradingNetworkList, TradingNetworkDetail
 
 urlpatterns = [
-    path("node", views.NodeCreateView.as_view()),
-    path("node/list", views.NodeListView.as_view()),
-    path("node/<pk>", views.NodeView.as_view()),
+    path(
+        "trading-networks/", TradingNetworkList.as_view(), name="trading-network-list"
+    ),
+    path(
+        "trading-networks/<int:pk>/",
+        TradingNetworkDetail.as_view(),
+        name="trading-network-detail",
+    ),
 ]
